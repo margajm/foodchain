@@ -1,1 +1,1 @@
-# foodchain
+# OnChain Summer - FoodChain
