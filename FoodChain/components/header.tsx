@@ -22,6 +22,7 @@ import {
 import {
   ThirdwebProvider,
   ConnectButton,
+  useWalletInfo
 } from "thirdweb/react";
 
 import { useConnect,  } from "thirdweb/react";
@@ -31,8 +32,9 @@ import { JSX, SVGProps } from "react";
 export default function HeaderComponent() {
 
   const { connect, isConnecting, error } = useConnect();
+  const  wallets  = useConnectedWallets();
   
-  const wallets = [
+  const walletsSetup = [
     createWallet("io.metamask"),
     createWallet("com.coinbase.wallet", {
       walletConfig: {
@@ -85,7 +87,7 @@ export default function HeaderComponent() {
           <div>
             <ConnectButton
                     client={thirdwebClient}
-                    wallets={wallets}
+                    wallets={walletsSetup}
                     theme={"light"}
                     connectButton={{ label: "Start" }}
                     connectModal={{
@@ -145,6 +147,10 @@ export default function HeaderComponent() {
 
     <NavigationMenu className="hidden lg:flex">
       <NavigationMenuList>
+
+      { (wallets.length>0) ? (
+        <>
+
         <NavigationMenuItem>
           <NavigationMenuLink
             className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
@@ -154,8 +160,7 @@ export default function HeaderComponent() {
           </NavigationMenuLink>
         </NavigationMenuItem>
 
-      { (wallets.length>0) ? (
-        <>
+
         <NavigationMenuItem>
           <NavigationMenuLink
             className="group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
@@ -181,9 +186,9 @@ export default function HeaderComponent() {
     <div className=" hidden lg:flex">
       <ConnectButton
               client={thirdwebClient}
-              wallets={wallets}
+              wallets={walletsSetup}
               theme={"light"}
-              connectButton={{ label: "Start" }}
+              connectButton={{ label: "Join Now" }}
               connectModal={{
                 size: "compact",
                 title: "Food Chain",
@@ -196,6 +201,7 @@ export default function HeaderComponent() {
             />
     </div>
 
+    { (wallets.length>0) && (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="outline">
@@ -236,6 +242,8 @@ export default function HeaderComponent() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+
+    )}
 
 
   </header>
