@@ -71,6 +71,10 @@ const config = {
           '0%': { transform: 'translateY(100%)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        slideDown: {
+          '0%': { transform: 'translateY(0)', opacity: '1' },
+          '100%': { transform: 'translateY(3%)', opacity: '0.2' },
+        },
         vanish: {
           '0%': { opacity: '1' },
           '100%': { opacity: '0' },
@@ -79,7 +83,8 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        'slide-up': 'slideUp 2s ease-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'slide-down': 'slideDown 1s ease-out',
         'vanish': 'vanish 2s ease-out forwards',
       },
     },

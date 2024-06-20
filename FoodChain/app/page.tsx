@@ -18,6 +18,8 @@ import {
 } from "thirdweb/wallets";
 
 import { useRouter } from 'next/navigation';
+import HeaderComponent from "@/components/header";
+import HeroSection from "@/components/hero-section";
 
 const wallets = [
   createWallet("io.metamask"),
@@ -54,62 +56,47 @@ export default function Home() {
     const timer = setTimeout(() => {
       setShowLogo(true);
       console.log("Show Logo");
-    }, 6000);
+    }, 5500);
     return () => clearTimeout(timer); // Cleanup timer on component unmount
   }, []);  
   
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-b from-[#c5a30a] via-[#c5a30a] to-[#f2c810] p-2">
+    <div className="items-center justify-center h-screen p-2">
 
       {!showLogo && (
-        <div className="h-max text-center items-center justify-center">
-          <div>
+        <div className="h-max min-w-max text-center items-center justify-center grid grid-cols-1 pt-6">
+
           <Image src="/logo-horizontal-transparent-version-2.png" alt="FoodChain Logo"
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: '90%', height: 'auto', margin: 'auto'}} />
+          style={{ width: '60%', height: 'auto', margin: 'auto'}} />
 
-          </div>
+        
           <Image src="/foochain-video01.gif" alt="Loading..." 
             width={0}
             height={0}
             style={{ width: '80%', height: 'auto', margin: 'auto'}}
-            className="rounded-xl shadow-xl ${showLogo ? 'animate-vanish' : ''}"/>
+            className="rounded-xl shadow-xl ${showLogo ? 'animate-vanish' : ''} flex lg:hidden"/>
+
+          <Image src="/foochain-video02.gif" alt="Loading..." 
+            width={0}
+            height={0}
+            style={{ width: '80%', height: 'auto', margin: 'auto'}}
+            className="rounded-xl shadow-xl ${showLogo ? 'animate-vanish' : ''} hidden lg:flex"/>
 
         </div>
       )}
 
       {showLogo && (
-        <div className="absolute flex flex-col items-center justify-center animate-slide-up">
-
-<div className="space-y-4 text-center">
-          <div>
-          <Image src="/logo-horizontal-transparent-version-2.png" alt="FoodChain Logo"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: '100%', height: 'auto', marginBottom: '25px'}} />
-
+        <>
+          <div  className="">
+            <HeaderComponent />
           </div>
-  
-          <ConnectButton
-            client={thirdwebClient}
-            wallets={wallets}
-            theme={"light"}
-            connectButton={{ label: "Start" }}
-            connectModal={{
-              size: "compact",
-              title: "Food Chain",
-              titleIcon:
-                "https://bafybeib4ousmbm2wpym66qikmvoyfu5usqnzmkvkcgl2w2xr425gzcchji.ipfs.w3s.link/foodchain-logo-only-circle.png",
-              showThirdwebBranding: false,
-            }}
-            onConnect={handleConnect}
-            chain={defineChain(baseSepolia)}
-          />        
-        </div>
-        </div>
+          <div className="animate-slide-up">
+            <HeroSection />
+          </div>
+        </>
       )}
 
     </div>
