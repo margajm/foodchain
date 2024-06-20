@@ -45,8 +45,10 @@ export default function Marketplace() {
 
   
   return (
-
-    <HeaderComponent />
+    <>
+      <HeaderComponent />
+      <h1>Settings Page</h1>
+    </>
    
   );
 }

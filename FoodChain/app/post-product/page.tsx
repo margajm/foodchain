@@ -45,8 +45,9 @@ export default function Marketplace() {
 
   
   return (
-
-    <HeaderComponent />
-   
+    <>
+      <HeaderComponent />
+      <h1>Post Product Page</h1>
+    </>
   );
 }
