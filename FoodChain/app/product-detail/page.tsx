@@ -7,8 +7,6 @@ import { NavigationMenuLink, NavigationMenuItem, NavigationMenuList, NavigationM
 import { DropdownMenuTrigger, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuContent, DropdownMenu } from "@/components/ui/dropdown-menu";
 import Image from "next/image";
 import MarketPlaceSection from "@/components/marketplace";
-import TopSellersComponent from "@/components/top-vendedores";
-import TopBuyersComponent from "@/components/top-buyers";
 import AddProductComponent from "@/components/add-product";
 import HeaderComponent from "@/components/header";
 import { JSX, SVGProps } from "react";
