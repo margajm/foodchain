@@ -45,10 +45,17 @@ export default function Marketplace() {
 
   
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <HeaderComponent />
-      <h1>Settings Page</h1>
-    </>
-   
+
+      <div className="grid md:grid-cols-2 gap-6 items-start">
+        <div className="grid gap-4">
+          <h1>Settings</h1>
+        </div>
+      </div>
+      {/* <footer className="sticky bottom-0 flex h-16 w-full items-center justify-center bg-gray-200 shadow dark:bg-gray-800">
+        <p className="text-sm text-gray-500 dark:text-gray-400">© 2024 FoodChain All rights reserved.</p>
+      </footer> */}
+    </div>
   );
 }
