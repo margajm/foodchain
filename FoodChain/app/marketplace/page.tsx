@@ -19,6 +19,7 @@ import {
 
 import { useRouter } from 'next/navigation';
 import HeaderComponent from "@/components/header";
+import MarketPlaceSection from "@/components/marketplace";
 
 
 const wallets = [
@@ -45,8 +46,14 @@ export default function Marketplace() {
 
   
   return (
+    <>
+      <HeaderComponent />
+      <MarketPlaceSection />
+      <footer className="sticky bottom-0 flex h-16 w-full items-center justify-center bg-gray-200 shadow dark:bg-gray-800">
+        <p className="text-sm text-gray-500 dark:text-gray-400">© 2024 FoodChain All rights reserved.</p>
+      </footer>
 
-    <HeaderComponent />
+    </>
    
   );
 }
